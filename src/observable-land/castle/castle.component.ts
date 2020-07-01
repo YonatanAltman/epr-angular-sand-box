@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 
 
 export interface IKnight {
@@ -12,14 +13,28 @@ export interface IKnight {
   styleUrls: ['./castle.component.scss']
 })
 export class CastleComponent implements OnInit {
+
+  private _paSystem = new Subject<string>();
   knights: IKnight[] = [];
+  public get pa(): Observable<string> {
+    return this._paSystem.asObservable();
+  }
   constructor() { }
 
   ngOnInit() {
+
   }
   listenAlarm(tower: string) {
     // save the king
-    alert(tower);
+    console.log(tower);
+
+    if (tower) {
+      this._paSystem.next(tower);
+    }
+  }
+  goHome(e) {
+    console.log(e);
+
   }
 
 }

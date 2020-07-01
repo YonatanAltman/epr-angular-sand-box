@@ -1,7 +1,22 @@
 <div class="wrapper">
-    <div class="title">{{name}}</div>
+    <div class="title">{{message$|async}}</div>
     <div class="window" (click)="setAlarm()">
         -Knight-
     </div>
-
+    <div>
+        {{money|currency:'ILS'}}
+    </div>
+    <div>
+        {{knghit|uppercase}}
+        {{knghit|lowercase}}
+        {{knghit|titlecase}}
+    </div>
+    <div>
+        {{date|date:'HH:mm:ss'}} |
+        {{date|date:'dd.MM.yy'}}
+        {{date|date:'MM.dd.yy'}}
+    </div>
+    <div>
+        #{{sernum|slice:-4}}
+    </div>
 </div>

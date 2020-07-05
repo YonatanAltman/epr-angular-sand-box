@@ -13,8 +13,15 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "epr",
+      "camelCase",
+      "kebab-case"
     ],
+    "variable-name": {
+      "options": [
+        "allow-leading-underscore"
+      ]
+    },
     "component-selector": [
       true,
       "element",
@@ -85,6 +92,11 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true
+  },
+  "variable-name": {
+    "options": [
+      "allow-leading-underscore"
+    ]
   },
   "rulesDirectory": [
     "codelyzer"

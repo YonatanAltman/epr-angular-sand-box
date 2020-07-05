@@ -21,7 +21,7 @@ const KNIGHTS: IKnight[] = [
 export class CastleService {
 
   private _paSystem = new BehaviorSubject<string>(undefined);
-  private _knights$ = new ReplaySubject<IKnight>();
+  private _knights$ = new ReplaySubject<IKnight>(1);
   private _paOldSystem = new Observable<string>(observer => {
     observer.next('A');
     observer.next('B');

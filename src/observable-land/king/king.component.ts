@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IKnight, CastleService } from '../castle.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-king',
@@ -11,6 +12,12 @@ export class KingComponent implements OnInit {
 
   public get knight$(): Observable<IKnight> {
     return this.castleService.knight$;
+  }
+  public get rank$(): Observable<string> {
+    return this.castleService.knight$
+      .pipe(
+        map(k => k.rank)
+      );
   }
   constructor(private castleService: CastleService) { }
 

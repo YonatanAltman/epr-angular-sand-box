@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { CastleService } from '../castle.service';
 
 
 export interface IKnight {
@@ -14,21 +15,19 @@ export interface IKnight {
 })
 export class CastleComponent implements OnInit {
 
- 
+
   knights: IKnight[] = [];
- 
-  constructor() { }
+
+  constructor(private service: CastleService) { }
 
   ngOnInit() {
 
   }
   listenAlarm(tower: string) {
     // save the king
-    console.log(tower);
+    console.log('tower', tower);
 
-    if (tower) {
-      this._paSystem.next(tower);
-    }
+    this.service.setAlarm(tower);
   }
   goHome(e) {
     console.log(e);

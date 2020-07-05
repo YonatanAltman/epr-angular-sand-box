@@ -1,8 +1,9 @@
 <div class="wrapper">
-    <div class="title">{{message$|async}}</div>
+    <div class="title"></div>
     <div class="window" (click)="setAlarm()">
         -Knight-
     </div>
+    {{message$|async}}
     <div>
         {{money|currency:'ILS'}}
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { CastleService } from '../castle.service';
 
 @Component({
   selector: 'app-tower',
@@ -13,30 +14,21 @@ export class TowerComponent implements OnInit {
   knghit = 'aRthOr';
   date = new Date();
   public get message$(): Observable<string> {
-    return this.pa.pipe(
-      startWith('sss')
-    );
+    return this.castleService.pa;
   }
   message: string;
   @Input() name: string;
-  @Input() pa: Observable<string>;
-  @Output() alarm = new EventEmitter<any>();
-  constructor() { }
+
+  constructor(private castleService: CastleService) { }
 
   ngOnInit() {
-    // this.alarm.emit(this.name);
-    this.pa.subscribe(() => console.log(this.name));
+    this.castleService.pa.subscribe(res => {
+      console.log(res);
 
+    });
 
-    // setTimeout(() => {
-    //   if (this.name !== 'A') {
-
-    //     sub.unsubscribe();
-    //   }
-    //   // the guard fell asleep
-    // }, 5000);
   }
   setAlarm() {
-    this.alarm.emit(this.name);
+    this.castleService.setAlarm(this.name);
   }
 }

@@ -14,11 +14,9 @@ export interface IKnight {
 })
 export class CastleComponent implements OnInit {
 
-  private _paSystem = new Subject<string>();
+ 
   knights: IKnight[] = [];
-  public get pa(): Observable<string> {
-    return this._paSystem.asObservable();
-  }
+ 
   constructor() { }
 
   ngOnInit() {

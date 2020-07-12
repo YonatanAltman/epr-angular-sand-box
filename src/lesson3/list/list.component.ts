@@ -29,6 +29,7 @@ export class ListComponent implements OnInit, OnDestroy {
       lastname: 'harry',
     },
   ];
+  _employeesFromServer = [];
   constructor(private app: AppService) {
     console.log('List Break😂');
 
@@ -45,6 +46,11 @@ export class ListComponent implements OnInit, OnDestroy {
     const a = 4;
     const b = 5;
     const result = this.app.calc(a, b);
+    this.app.getAllUsers().subscribe(res => {
+      console.log(res);
+
+    });
+
   }
 
   ngOnDestroy() {

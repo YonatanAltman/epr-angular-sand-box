@@ -26,4 +26,8 @@ export class AppService {
   public navTo(rout: string) {
     this.router.navigate([rout]);
   }
+  public getAllUsers() {
+    const url = 'http://localhost:54867/api/user';
+    return this.http.get<IEmployee[]>(url);
+  }
 }

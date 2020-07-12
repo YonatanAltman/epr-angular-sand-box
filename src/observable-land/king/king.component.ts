@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IKnight, CastleService } from '../castle.service';
-import { map } from 'rxjs/operators';
-
+import { map, filter, startWith } from 'rxjs/operators';
+const defaultKnight: IKnight = { name: 'yonatan', id: 111, price: 4000, hourseName: 'suse', rank: 'A' }
 @Component({
   selector: 'app-king',
   templateUrl: './king.component.html',
@@ -16,6 +16,8 @@ export class KingComponent implements OnInit {
   public get rank$(): Observable<string> {
     return this.castleService.knight$
       .pipe(
+        startWith(defaultKnight),
+        filter(k => !!k),
         map(k => k.rank)
       );
   }

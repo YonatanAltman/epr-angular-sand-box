@@ -6,6 +6,7 @@ import { Lesson3Module } from '../lesson3/lesson3.module';
 import { RouterModule } from '@angular/router';
 import { ServiceLandModule } from '../service-land/service-land.module';
 import { ObservableLandModule } from '../observable-land/observable-land.module';
+import { OfficeModule } from 'src/office/office.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ObservableLandModule } from '../observable-land/observable-land.module'
     RouterModule,
     Lesson3Module,
     ServiceLandModule,
-    ObservableLandModule
+    ObservableLandModule,
+    OfficeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

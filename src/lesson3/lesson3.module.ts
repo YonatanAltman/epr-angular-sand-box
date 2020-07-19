@@ -6,13 +6,15 @@ import { EmployeeComponent } from './employee/employee.component';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
     declarations: [
         HomeComponent,
         ListComponent,
         EmployeeComponent,
-        CardComponent],
+        CardComponent,
+        HighlightDirective],
     imports: [
         CommonModule,
         HttpClientModule,

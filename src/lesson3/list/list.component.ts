@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IEmployee } from '../employee/employee.model';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
+import { Observable, ReplaySubject, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
-  employees: IEmployee[] = [
+  oldEmployeesDoNotUse: IEmployee[] = [
     {
       id: 0,
       email: 'yonatan@yaltman.com',
@@ -29,6 +30,12 @@ export class ListComponent implements OnInit, OnDestroy {
       lastname: 'harry',
     },
   ];
+  private _employees$ = new ReplaySubject<IEmployee[]>(1);
+  // private _employeesBehavior$ = new BehaviorSubject<IEmployee[]>([]);
+  public get employees$(): Observable<IEmployee[]> {
+    // return this._employees$;
+    return this._employees$.asObservable();
+  }
   _employeesFromServer = [];
   constructor(private app: AppService) {
     console.log('List Break😂');
@@ -46,8 +53,14 @@ export class ListComponent implements OnInit, OnDestroy {
     const a = 4;
     const b = 5;
     const result = this.app.calc(a, b);
-    this.app.getAllUsers().subscribe(res => {
-      console.log(res);
+
+    // Create Http Request To Server
+    const requestToServer = this.app.getAllUsers();
+
+    // Call the Http Request
+    requestToServer.subscribe(res => {
+      console.log('Employess from server', res);
+      this._employees$.next(res);
 
     });
 

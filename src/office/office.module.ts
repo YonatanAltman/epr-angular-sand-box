@@ -12,8 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     OfficeRoutingModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ]
 })
 export class OfficeModule { }

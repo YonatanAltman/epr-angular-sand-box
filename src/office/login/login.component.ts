@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  submit() {
+  submit1() {
     const { username, password } = this;
     const username1 = this.username;
     const password1 = this.password;
@@ -34,6 +34,14 @@ export class LoginComponent implements OnInit {
 
     });
 
+
+  }
+  submit(user) {
+    console.log(user);
+    this.userService.login(user).subscribe(res => {
+      console.log('Response From Server', res);
+
+    });
 
   }
 

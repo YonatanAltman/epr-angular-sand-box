@@ -1,16 +1,22 @@
 <div class="wrapper">
-    <div class="form" action="">
+    <form class="form" #loginForm="ngForm" (submit)="submit(loginForm.value)">
         <div class="input">
             <label for="username">{{label.username}}</label>
-            <input type="text" name="username" [(ngModel)]="username">
+            <input type="text" required name="username" ngModel>
         </div>
         <div class="input">
             <label for="username">{{label.password}}</label>
-            <input type="password" name="password" [(ngModel)]="password">
+            <input type="password" required minlength="4" name="password" ngModel>
         </div>
         <div class="action">
-            <button (click)="submit()">{{btn.submit}}</button>
+            <button [disabled]="!loginForm.valid">{{btn.submit}}</button>
         </div>
-    </div>
+        <div>
+            valid {{loginForm.valid}}
+        </div>
+        <div>
+            value {{loginForm.value|json}}
+        </div>
+    </form>
 </div>
 `

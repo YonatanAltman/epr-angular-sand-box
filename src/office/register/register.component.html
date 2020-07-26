@@ -1,22 +1,31 @@
-<p>register works!</p>
-<div class="control">
-    <label for="name">{{label.name}}</label>
-    <input type="text" [formControl]="nameControl">
-</div>
-<div>
-    First Name value is: {{nameControl.value}}
-</div>
-<div class="control">
-    <label for="name">{{label.email}}</label>
-    <input type="email" [formControl]="emailControl">
-</div>
-<div>
-    Email value is: {{emailControl.value}}
-</div>
-<div>
-    Email valid {{emailControl.valid}}
-</div>
+<div class="wrapper {{444+9}}">
 
-<button (click)="print()">
-    Print
-</button>
+    <form [formGroup]="rForm" (submit)="print()">
+        <div class="control">
+            <div class="control-title">{{label.firstname}}</div>
+            <input type="text" [formControlName]="controls.firstname">
+        </div>
+        <div class="control">
+            <div class="control-title">{{label.lastname}}</div>
+            <input type="text" [formControlName]="controls.lastname">
+        </div>
+        <div class="control">
+            <div class="control-title">{{label.email}}</div>
+            <input type="email" [formControlName]="controls.email">
+        </div>
+        <div class="control">
+            <div class="control-title">{{label.password}}</div>
+            <input type="password" [formControlName]="controls.password">
+        </div>
+        <div class="control">
+            <div class="control-title">{{label.phone}}</div>
+            <input type="text" [formControlName]="controls.phone">
+        </div>
+
+
+        <div class="action">
+            <button [disabled]="!rForm.valid">{{btn.ok | titlecase}}</button>
+            <button (click)="$event.preventDefault();cancel()">{{btn.cancel | titlecase}}</button>
+        </div>
+    </form>
+</div>

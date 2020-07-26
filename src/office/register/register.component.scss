@@ -1,0 +1,15 @@
+.wrapper {
+    form {
+        .action {
+            button {
+                transition: all ease-in-out 0.2s;
+                &:focus {
+                    border-radius: 10px;
+                    background-color: darkgreen;
+                    color: white;
+                    transition: all ease-in-out 0.2s;
+                }
+            }
+        }
+    }
+}

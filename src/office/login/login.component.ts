@@ -89,8 +89,9 @@ export class LoginComponent implements OnInit {
 
 
   }
-  submit(user) {
-    console.log(user);
+  submit(form) {
+    console.log(form);
+    const user = form.value;
     const req = this.userService.login(user);
     req.subscribe(
       res => {

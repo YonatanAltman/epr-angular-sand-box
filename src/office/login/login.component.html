@@ -1,8 +1,8 @@
 <div class="wrapper">
-    <form class="form" #loginForm="ngForm" (submit)="submit(loginForm.value)">
+    <form class="form" #loginForm="ngForm" (submit)="submit(loginForm)">
         <div class="input">
             <label for="username">{{label.username}}</label>
-            <input type="text" required name="username" ngModel>
+            <input type="text" minlength="3" required name="username" ngModel>
         </div>
         <div class="input">
             <label for="username">{{label.password}}</label>
@@ -17,6 +17,7 @@
         <div>
             value {{loginForm.value|json}}
         </div>
+
         <div>
             <h2>{{firstname$|async}}</h2>
         </div>

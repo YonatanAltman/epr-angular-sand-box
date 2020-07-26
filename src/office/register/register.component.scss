@@ -1,6 +1,28 @@
+$test: solid red 1px;
 .wrapper {
+    font-family: Aclonica;
+    display: grid;
+    place-content: center;
+    height: 100vh;
     form {
+        border: solid green 2px;
+        height: calc(100vh - 300px);
+        border-radius: 20px;
+        width: 500px;
+        max-width: 90vw;
+        margin: auto;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        row-gap: 10px;
+        padding: 10px;
+        .controls {
+            overflow: auto;
+            display: grid;
+            outline: $test;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
         .action {
+            outline: $test;
             button {
                 transition: all ease-in-out 0.2s;
                 &:focus {

@@ -1,0 +1,22 @@
+<p>register works!</p>
+<div class="control">
+    <label for="name">{{label.name}}</label>
+    <input type="text" [formControl]="nameControl">
+</div>
+<div>
+    First Name value is: {{nameControl.value}}
+</div>
+<div class="control">
+    <label for="name">{{label.email}}</label>
+    <input type="email" [formControl]="emailControl">
+</div>
+<div>
+    Email value is: {{emailControl.value}}
+</div>
+<div>
+    Email valid {{emailControl.valid}}
+</div>
+
+<button (click)="print()">
+    Print
+</button>

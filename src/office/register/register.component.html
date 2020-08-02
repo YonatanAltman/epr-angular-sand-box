@@ -2,27 +2,8 @@
 
     <form [formGroup]="rForm" (submit)="print()">
         <div class="controls">
-            <epr-input></epr-input>
-            <div class="control">
-                <div class="control-title">{{label.firstname}}</div>
-                <input type="text" name="firstname" [formControlName]="controls.firstname">
-            </div>
-            <div class="control">
-                <div class="control-title">{{label.lastname}}</div>
-                <input type="text" [formControlName]="controls.lastname">
-            </div>
-            <div class="control">
-                <div class="control-title">{{label.email}}</div>
-                <input type="email" [formControlName]="controls.email">
-            </div>
-            <div class="control">
-                <div class="control-title">{{label.password}}</div>
-                <input type="password" [formControlName]="controls.password">
-            </div>
-            <div class="control">
-                <div class="control-title">{{label.phone}}</div>
-                <input type="text" [formControlName]="controls.phone">
-            </div>
+            <epr-input *ngFor="let i of inputs" [formControlName]="i.name" [config]="i"></epr-input>
+
         </div>
 
 
@@ -31,4 +12,7 @@
             <button (click)="$event.preventDefault();cancel()">{{btn.cancel | titlecase}}</button>
         </div>
     </form>
+    <div>
+        {{rForm.value|json}}
+    </div>
 </div>

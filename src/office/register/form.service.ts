@@ -1,17 +1,65 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MyValidators } from './input.validators';
+import { IInputConfig } from 'src/input/input.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
+  inputs: IInputConfig[] = [
+    {
+      name: 'firstname',
+      value: 'Maayan',
+      label: 'First Name',
+      placeholder: 'Type your Firstname',
+      type: 'text',
+      validators: [Validators.required]
+    },
+    {
+      name: 'lastname',
+      value: undefined,
+      label: 'Last Name',
+      type: 'text'
+    },
+    {
+      name: 'email',
+      value: undefined,
+      label: 'Email',
+      type: 'email',
+      validators: [Validators.required, Validators.email]
+    },
+    {
+      name: 'password',
+      value: undefined,
+      label: 'Password',
+      type: 'password',
+      validators: MyValidators.ValidatePassword
+    },
+    {
+      name: 'phone',
+      value: undefined,
+      label: 'Phone',
+      type: 'text',
+      validators: [...MyValidators.ValidatePhone, Validators.required]
+    },
+
+  ];
 
   constructor(private fb: FormBuilder) {
 
   }
 
   getForm() {
+    const form = this.fb.group({});
+
+    this.inputs.forEach(i => {
+      const control = this.fb.control(i.value, i.validators);
+      form.addControl(i.name, control);
+    });
+    return form;
+  }
+  getForm2() {
     const lastnameValidators = [...MyValidators.ValidatePassword, Validators.maxLength(5)];
     const form = this.fb.group({
       firstname: 'yonatan',

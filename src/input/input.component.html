@@ -1,5 +1,6 @@
 <div class="control">
-    <div class="control-title">{{config.title}}</div>
-    <input [type]="config.type" [value]="config.value" [name]="config.name" [formControl]="control">
+    <div class="control-title">{{config.label}}</div>
+    <input [type]="config.type" [value]="config.value || '' " [name]="config.name" [formControl]="control"
+        [placeholder]="config.placeholder || ''">
     <div class="error">{{config.error}}</div>
 </div>

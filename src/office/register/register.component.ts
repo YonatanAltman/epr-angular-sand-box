@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MyValidators } from './input.validators';
+import { FormControl } from '@angular/forms';
 import { FormService } from './form.service';
+import { IInputConfig } from '../../input/input.model';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +32,10 @@ export class RegisterComponent implements OnInit {
   nameControl = new FormControl();
   emailControl = new FormControl();
 
+
+
   rForm = this.fs.getForm();
+  inputs = this.fs.inputs;
   constructor(private fs: FormService) { }
 
   ngOnInit() {

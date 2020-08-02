@@ -18,11 +18,12 @@ $test: solid red 1px;
         .controls {
             overflow: auto;
             display: grid;
-            outline: $test;
+            epr-input {
+                border: $test;
+            }
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
         .action {
-            outline: $test;
             button {
                 transition: all ease-in-out 0.2s;
                 &:focus {

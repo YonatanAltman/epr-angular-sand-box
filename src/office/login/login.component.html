@@ -12,14 +12,7 @@
             <button [disabled]="!loginForm.valid">{{btn.submit}}</button>
         </div>
         <div>
-            valid {{loginForm.valid}}
-        </div>
-        <div>
-            value {{loginForm.value|json}}
-        </div>
-
-        <div>
-            <h2>{{firstname$|async}}</h2>
+            <a [routerLink]="[ '/office/register' ]">{{label.register}}</a>
         </div>
     </form>
 </div>

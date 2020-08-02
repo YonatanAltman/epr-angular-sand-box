@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyValidators } from './input.validators';
+import { FormService } from './form.service';
 
 @Component({
   selector: 'app-register',
@@ -27,18 +28,12 @@ export class RegisterComponent implements OnInit {
     password: 'password',
     phone: 'phone',
     email: 'email',
-  }
+  };
   nameControl = new FormControl();
   emailControl = new FormControl();
 
-  rForm = new FormGroup({
-    firstname: new FormControl('', Validators.required),
-    lastname: new FormControl(undefined, [Validators.minLength(2), Validators.maxLength(10)]),
-    password: new FormControl('', MyValidators.ValidatePassword),
-    phone: new FormControl('', MyValidators.ValidatePhone),
-    email: new FormControl(undefined, Validators.email)
-  });
-  constructor() { }
+  rForm = this.fs.getForm();
+  constructor(private fs: FormService) { }
 
   ngOnInit() {
   }

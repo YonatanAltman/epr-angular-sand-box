@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   _currentName;
   label = {
     username: 'שם משתמש',
-    password: 'סיסמה'
+    password: 'סיסמה',
+    register: 'להרשמה'
   };
   btn = {
     submit: 'התחבר',

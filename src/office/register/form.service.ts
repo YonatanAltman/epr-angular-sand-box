@@ -12,9 +12,10 @@ export class FormService {
   }
 
   getForm() {
+    const lastnameValidators = [...MyValidators.ValidatePassword, Validators.maxLength(5)];
     const form = this.fb.group({
       firstname: 'yonatan',
-      lastname: ['Altman', Validators.minLength(3)],
+      lastname: ['Altman', Validators.compose(lastnameValidators)],
       password: undefined,
       phone: undefined,
       email: undefined

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { InputModule } from '../input/input.module';
 
 
 
@@ -15,7 +16,7 @@ import { EmployeeComponent } from './employee/employee.component';
     CommonModule,
     OfficeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    InputModule,  ]
 })
 export class OfficeModule { }

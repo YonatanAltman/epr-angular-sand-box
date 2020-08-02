@@ -2,9 +2,10 @@
 
     <form [formGroup]="rForm" (submit)="print()">
         <div class="controls">
+            <epr-input></epr-input>
             <div class="control">
                 <div class="control-title">{{label.firstname}}</div>
-                <input type="text" [formControlName]="controls.firstname">
+                <input type="text" name="firstname" [formControlName]="controls.firstname">
             </div>
             <div class="control">
                 <div class="control-title">{{label.lastname}}</div>

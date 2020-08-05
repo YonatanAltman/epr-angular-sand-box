@@ -1,6 +1,13 @@
-<div class="control">
-    <div class="control-title">{{config.label}}</div>
-    <input [type]="config.type" [value]="config.value || '' " [name]="config.formControlName" [formControl]="control"
-        [placeholder]="config.placeholder || ''">
-    <div class="error">{{config.error}}</div>
-</div>
+<ng-container [ngSwitch]="config.type">
+
+    <div class="control" *ngSwitchCase="'buttonGroup'">
+
+    </div>
+    <div class="control" *ngSwitchDefault>
+        <div class="control-title">{{config.label}}</div>
+        <input [type]="config.type" [value]="config.value || '' " [name]="config.formControlName"
+            [formControl]="control" [placeholder]="config.placeholder || ''">
+        <div class="error">{{config.error}}</div>
+    </div>
+
+</ng-container>

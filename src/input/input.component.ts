@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup } from '@angular/forms';
 import { IInputConfig } from './input.model';
+import { map, filter, debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 
 
 
@@ -18,6 +19,17 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   disabled = false;
   @Input() config: IInputConfig;
   control = new FormControl();
+  formEmployee = new FormGroup({
+    firstname: new FormControl('Yonatan'),
+    lastname: new FormControl('Altman'),
+    email: new FormControl('Yonatan@Yonatan.com'),
+    address: new FormGroup({
+
+      city: new FormControl('Tirat Yehuda'),
+      street: new FormControl('Tirat Yehuda'),
+      house: new FormControl(120),
+    }),
+  });
   /**
    * 
    * @param _ ghost function to be override
@@ -50,11 +62,43 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this.control.valueChanges.subscribe((val => {
-      console.log(val);
+    this.control.valueChanges.pipe(
+      debounceTime(1900),
+      startWith(2000011111),
+      filter(val => !!val),
+      distinctUntilChanged(),
+      map(val => {
+        console.log(val);
 
-      this.onChangefn(val);
-    }));
+        this.onChangefn(val);
+      })
+    ).subscribe();
+
+  }
+  printEmployee() {
+    const form = this.formEmployee; // FormGroup
+
+    const { controls } = form; // {key: AbstractControl, key: FormControl,, key: FormGroup , ... }
+
+    const { firstname, lastname, email, address } = controls;
+
+    // const { city } = (lastname as FormGroup).controls; // <-- error
+
+    const { city } = (address as FormGroup).controls;
+
+    if (firstname.valid && email.valid) {
+      console.log('Employee', form.value); // <-- `FormGroup`'s value represent all FormControls values
+      console.log('First Name', firstname.value);
+      console.log('City:', city.value);
+
+    }
+
+    if (controls.firstname.valid && controls.email.valid) {
+
+    }
+
+    // const controls = form.controls; // FormGroup
+
   }
 
 }

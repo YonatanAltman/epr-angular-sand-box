@@ -2,7 +2,7 @@
 
     <form [formGroup]="rForm" (submit)="print()">
         <div class="controls">
-            <epr-input *ngFor="let i of inputs" [formControlName]="i.name" [config]="i"></epr-input>
+            <epr-input *ngFor="let i of inputs" [formControlName]="i.formControlName" [config]="i"></epr-input>
 
         </div>
 

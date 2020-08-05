@@ -9,7 +9,7 @@ import { IInputConfig } from 'src/input/input.model';
 export class FormService {
   inputs: IInputConfig[] = [
     {
-      name: 'firstname',
+      formControlName: 'firstname',
       value: 'Maayan',
       label: 'First Name',
       placeholder: 'Type your Firstname',
@@ -17,27 +17,27 @@ export class FormService {
       validators: [Validators.required]
     },
     {
-      name: 'lastname',
+      formControlName: 'lastname',
       value: undefined,
       label: 'Last Name',
       type: 'text'
     },
     {
-      name: 'email',
+      formControlName: 'email',
       value: undefined,
       label: 'Email',
       type: 'email',
       validators: [Validators.required, Validators.email]
     },
     {
-      name: 'password',
+      formControlName: 'password',
       value: undefined,
       label: 'Password',
       type: 'password',
       validators: MyValidators.ValidatePassword
     },
     {
-      name: 'phone',
+      formControlName: 'phone',
       value: undefined,
       label: 'Phone',
       type: 'text',
@@ -55,7 +55,7 @@ export class FormService {
 
     this.inputs.forEach(i => {
       const control = this.fb.control(i.value, i.validators);
-      form.addControl(i.name, control);
+      form.addControl(i.formControlName, control);
     });
     return form;
   }
